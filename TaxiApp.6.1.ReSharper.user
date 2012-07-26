@@ -1,0 +1,35 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Views/d:Home/f:Index.cshtml" caret="4" fromTop="0" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Content/f:Site.css" caret="948" fromTop="25" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:App_Start/f:BundleConfig.cs" caret="1485" fromTop="23" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Controllers/f:HomeController.cs" caret="192" fromTop="8" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Views/d:Shared/f:_Layout.cshtml" caret="340" fromTop="7" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Views/d:Shared/f:_Layout.cshtml" caret="432" fromTop="12" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Views/d:Shared/f:_Layout.cshtml" caret="1150" fromTop="9" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Views/d:Shared/f:_Layout.cshtml" caret="1448" fromTop="10" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Views/d:Shared/f:_Layout.cshtml" caret="1482" fromTop="13" />
+      <File id="7E9278B2-D353-49EB-B7B5-0272423D0A34/d:Views/d:Shared/f:_Layout.cshtml" caret="332" fromTop="7" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False" />
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>
