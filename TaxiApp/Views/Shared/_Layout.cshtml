@@ -9,12 +9,6 @@
   @Styles.Render("~/Content/Site.css")
   @Styles.Render("~/Content/bootstrap-responsive.css")
   @Scripts.Render("~/bundles/modernizr")
-  <style>
-    body
-    {
-      padding-top: 40px; /* 60px to make the container go all the way to the bottom of the topbar */
-    }
-  </style>
 </head>
 <body>
   <div class="navbar navbar-fixed-top">
@@ -22,7 +16,7 @@
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
           class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-        </a><a class="brand" href="#">Taxi!!</a>
+        </a><a class="brand" href="#">Your real-time taxi application</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li class="active">@Html.ActionLink("Map", "Index", "Home")</li>

@@ -1,8 +1,6 @@
 ﻿// Map init here please
 $(function () {
 
-    return;
-
     var map = new OpenLayers.Map("map");
     var mapnik = new OpenLayers.Layer.OSM();
     var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
