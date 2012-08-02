@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace TaxiApp
 {
-    public class TaxiApi : ApiController
+    public class TaxiRequest : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
@@ -16,16 +16,18 @@ namespace TaxiApp
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public string Get(decimal lat, decimal lon, string name, string mobileNumber)
         {
-            return "value";
+            SignalR.GlobalHost.ConnectionManager.GetHubContext<TaxiHub>().Clients
+                .requestTaxi(new { lat, lon, name, mobileNumber });
+
+            return Guid.NewGuid().ToString();
         }
 
         // POST api/<controller>
         public void Post(decimal lat, decimal lon, string name, string mobileNumber)
         {
-            SignalR.GlobalHost.ConnectionManager.GetHubContext<TaxiHub>().Clients
-                .requestTaxi(new {lat, lon, name, mobileNumber});
+
         }
 
         // PUT api/<controller>/5
