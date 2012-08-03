@@ -14,10 +14,17 @@ namespace TaxiApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+//            routes.MapHttpRoute(
+//                name: "DefaultApi",
+//                routeTemplate: "api/{controller}/{id}",
+//                defaults: new { id = RouteParameter.Optional }
+//            );            
+            
             routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                name: "TaxiApi",
+                routeTemplate: "api/taxi/{lat}/{lon}/{name}/{mobile}", 
+                defaults: new {controller = "Taxi", lat = RouteParameter.Optional, lon = RouteParameter.Optional,
+                name = RouteParameter.Optional, mobile = RouteParameter.Optional}
             );
 
             routes.MapRoute(

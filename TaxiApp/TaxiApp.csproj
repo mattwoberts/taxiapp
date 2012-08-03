@@ -142,7 +142,7 @@
     <Compile Include="JsonPFormatter.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaxiRequest.cs" />
+    <Compile Include="TaxiController.cs" />
     <Compile Include="TaxiHub.cs" />
   </ItemGroup>
   <ItemGroup>
