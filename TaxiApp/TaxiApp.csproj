@@ -146,6 +146,24 @@
     <Compile Include="TaxiHub.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Client\phoneapp\index.html" />
+    <Content Include="Client\phoneapp\lib\._jquery.mobile-1.1.0.js" />
+    <Content Include="Client\phoneapp\lib\._jquery.ui.map.extensions.js" />
+    <Content Include="Client\phoneapp\lib\._jquery.ui.map.js" />
+    <Content Include="Client\phoneapp\lib\._jquery.ui.map.microdata.js" />
+    <Content Include="Client\phoneapp\lib\._jquery.ui.map.microformat.js" />
+    <Content Include="Client\phoneapp\lib\._jquery.ui.map.overlays.js" />
+    <Content Include="Client\phoneapp\lib\._jquery.ui.map.rdfa.js" />
+    <Content Include="Client\phoneapp\lib\._jquery.ui.map.services.js" />
+    <Content Include="Client\phoneapp\lib\jquery.mobile-1.1.0.js" />
+    <Content Include="Client\phoneapp\lib\jquery.ui.map.extensions.js" />
+    <Content Include="Client\phoneapp\lib\jquery.ui.map.js" />
+    <Content Include="Client\phoneapp\lib\jquery.ui.map.microdata.js" />
+    <Content Include="Client\phoneapp\lib\jquery.ui.map.microformat.js" />
+    <Content Include="Client\phoneapp\lib\jquery.ui.map.overlays.js" />
+    <Content Include="Client\phoneapp\lib\jquery.ui.map.rdfa.js" />
+    <Content Include="Client\phoneapp\lib\jquery.ui.map.services.js" />
+    <Content Include="Client\phoneapp\style.css" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -246,6 +264,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Client\phoneapp\.DS_Store" />
+    <None Include="Client\phoneapp\._.DS_Store" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
