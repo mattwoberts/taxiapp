@@ -50,7 +50,7 @@
 				url: 'http://taxiapp.azurewebsites.net/api/taxi',
 				type: 'GET',
 				dataType: 'jsonp',
-				data: {lat: clientPosition.lat(), lon: clientPosition.lon(), name: 'Frank Boggins', mobileNumber: '01772 123456'},
+				data: {lat: clientPosition.lat(), lon: clientPosition.lng(), name: 'Frank Boggins', mobileNumber: '01772 123456'},
 				success: function (data) {
 					console.log(data);
 					alert('Thanks for booking that taxi, your booking reference is ' + data);
