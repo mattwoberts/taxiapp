@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html> 
-	<head> 
+<head> 
 	<title>Book a taxi</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
@@ -12,13 +12,13 @@
 	<script type="text/javascript" src="lib/jquery.ui.map.extensions.js"></script>
 	<script type="text/javascript">
 
-
+	var clientPosition = null;
 
 	$(document).bind('pageinit', function() {		
 		$('#map_canvas').gmap().bind('init', function(evt, map) {
 			$('#map_canvas').gmap('getCurrentPosition', function(position, status) {
 				if ( status === 'OK' ) {
-					var clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					$('#map_canvas').gmap('addMarker', {'position': clientPosition, 'bounds': true});
 					$('#map_canvas').gmap('addShape', 'Circle', { 
 						'strokeWeight': 0, 
@@ -41,9 +41,22 @@
 			// Send to the cloud, and get back a booking reference.
 
 			// make a post request to the nice API
+			if (clientPosition != null) {
+				alert("Sorry, we didn't manage to locate you, so we can't book you a taxi.");
+				return;
+			}
 
+			$.ajax({
+				url: 'http://taxiapp.azurewebsites.net/api/taxi',
+				type: 'GET',
+				dataType: 'jsonp',
+				data: {lat: clientPosition.latitude, lon: clientPosition.longitude, name: 'Frank Boggins', mobileNumber: '01772 123456'},
+				success: function (data) {
+					console.log(data);
+					alert('Thanks for booking that taxi, your booking reference is ' + data);
+				}
+			})
 
-			console.log("ok");
 
 		});
 
@@ -51,24 +64,24 @@
 	});
 
 
-	</script>
+</script>
 </head> 
 <body> 
 
-<div data-role="page">
+	<div data-role="page">
 
-	<div data-role="header">
-		<h1>Book yourself a nice taxi</h1>
-	</div><!-- /header -->
+		<div data-role="header">
+			<h1>Book yourself a nice taxi</h1>
+		</div><!-- /header -->
 
-	<div data-role="content">	
+		<div data-role="content">	
 
-		<div class="map" id="map_canvas"></div>
-		<div><a id="book" data-role="button">Book!</a></div>
+			<div class="map" id="map_canvas"></div>
+			<div><a id="book" data-role="button">Book!</a></div>
 
-	</div><!-- /content -->
+		</div><!-- /content -->
 
-</div><!-- /page -->
+	</div><!-- /page -->
 
 </body>
 </html>
