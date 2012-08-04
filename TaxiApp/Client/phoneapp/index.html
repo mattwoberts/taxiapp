@@ -41,7 +41,7 @@
 			// Send to the cloud, and get back a booking reference.
 
 			// make a post request to the nice API
-			if (clientPosition != null) {
+			if (clientPosition == null) {
 				alert("Sorry, we didn't manage to locate you, so we can't book you a taxi.");
 				return;
 			}
@@ -50,7 +50,7 @@
 				url: 'http://taxiapp.azurewebsites.net/api/taxi',
 				type: 'GET',
 				dataType: 'jsonp',
-				data: {lat: clientPosition.latitude, lon: clientPosition.longitude, name: 'Frank Boggins', mobileNumber: '01772 123456'},
+				data: {lat: clientPosition.lat(), lon: clientPosition.lon(), name: 'Frank Boggins', mobileNumber: '01772 123456'},
 				success: function (data) {
 					console.log(data);
 					alert('Thanks for booking that taxi, your booking reference is ' + data);
