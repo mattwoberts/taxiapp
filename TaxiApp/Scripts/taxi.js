@@ -33,7 +33,7 @@ var taxi = function () {
 
         hub.requestTaxi = function (response) {
             // A taxi request has come in, so display this in some meaningful way (popup for now)
-            console.log("taxiRequest",response);
+            console.log("taxiRequest", response);
             var latLon = new OpenLayers.LonLat(response.lon, response.lat);
             var pos = latLon.transform(fromProjection, toProjection);
             var popup = new OpenLayers.Popup.FramedCloud("chicken",
@@ -42,9 +42,10 @@ var taxi = function () {
               "<p><h2>Taxi Request!</h2><br>From " + response.name + ", " + response.mobileNumber + "</p>",
               null, true, null);
             map.addPopup(popup);
+            console.log("done with the popup");
         };
 
-        hub.sayHello = function() {
+        hub.sayHello = function () {
             console.log("helllooo");
         };
 
@@ -59,7 +60,7 @@ var taxi = function () {
     };
 
     return {
-        hub : hub,
+        hub: hub,
         map: map,
         init: function () {
             setupOpenLayers();

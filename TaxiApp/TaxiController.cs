@@ -36,7 +36,7 @@ namespace TaxiApp
                 {
                     result = (T) Convert.ChangeType(value, typeof(T));
                 }
-                finally
+                catch
                 {
                     result = defaultValue;
                 }

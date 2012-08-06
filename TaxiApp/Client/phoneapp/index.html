@@ -1,87 +1,90 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-	<title>Book a taxi</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-	<script src="lib/jquery.ui.map.js"></script>
-	<script type="text/javascript" src="lib/jquery.ui.map.extensions.js"></script>
-	<script type="text/javascript">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book a taxi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <script src="lib/jquery.ui.map.js"></script>
+  <script type="text/javascript" src="lib/jquery.ui.map.extensions.js"></script>
+  <script type="text/javascript">
 
-	var clientPosition = null;
+    var clientPosition = null;
 
-	$(document).bind('pageinit', function() {		
-		$('#map_canvas').gmap().bind('init', function(evt, map) {
-			$('#map_canvas').gmap('getCurrentPosition', function(position, status) {
-				if ( status === 'OK' ) {
-					clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-					$('#map_canvas').gmap('addMarker', {'position': clientPosition, 'bounds': true});
-					$('#map_canvas').gmap('addShape', 'Circle', { 
-						'strokeWeight': 0, 
-						'fillColor': "#008595", 
-						'fillOpacity': 0.25, 
-						'center': clientPosition, 
-						'radius': 15, 
-						'clickable': false 
-					});
-				}
-			});   
-		});	
+    $(document).bind('pageinit', function () {
+      $('#map_canvas').gmap().bind('init', function (evt, map) {
+        $('#map_canvas').gmap('getCurrentPosition', function (position, status) {
+          if (status === 'OK') {
+            clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            console.log(clientPosition);
 
-		$('#book').click(function() {
-			// Need to send a book taxi request to the cloud.
-			// The request needs to include:
-			// 1) A name of the person
-			// 2) Ideally, a phone number would be nice
-			// 3) A booking reference
-			// Send to the cloud, and get back a booking reference.
+            $('#map_canvas').gmap('addMarker', { 'position': clientPosition, 'bounds': true });
+            $('#map_canvas').gmap('addShape', 'Circle', {
+              'strokeWeight': 0,
+              'fillColor': "#008595",
+              'fillOpacity': 0.25,
+              'center': clientPosition,
+              'radius': 15,
+              'clickable': false
+            });
+          }
+        });
+      });
 
-			// make a post request to the nice API
-			if (clientPosition == null) {
-				alert("Sorry, we didn't manage to locate you, so we can't book you a taxi.");
-				return;
-			}
+      $('#book').click(function () {
+        // Need to send a book taxi request to the cloud.
+        // The request needs to include:
+        // 1) A name of the person
+        // 2) Ideally, a phone number would be nice
+        // 3) A booking reference
+        // Send to the cloud, and get back a booking reference.
 
-			$.ajax({
-				url: 'http://taxiapp.azurewebsites.net/api/taxi',
-				type: 'GET',
-				dataType: 'jsonp',
-				data: {lat: clientPosition.lat(), lon: clientPosition.lng(), name: 'Frank Boggins', mobileNumber: '01772 123456'},
-				success: function (data) {
-					console.log(data);
-					alert('Thanks for booking that taxi, your booking reference is ' + data);
-				}
-			})
+        // make a post request to the nice API
+        if (clientPosition == null) {
+          alert("Sorry, we didn't manage to locate you, lets assume you mean lancaster :)");
+          clientPosition = new google.maps.LatLng(54.048354, -2.800784);
+        }
 
+        console.log("sending", clientPosition.lat(), clientPosition.lng());
 
-		});
-
-		
-	});
+        $.ajax({
+          url: 'http://localhost:49283/api/taxi',
+          type: 'GET',
+          dataType: 'jsonp',
+          data: { lat: clientPosition.lat(), lon: clientPosition.lng(), name: 'Frank Boggins', mobileNumber: '01772 123456' },
+          success: function (data) {
+            console.log(data);
+            alert('Thanks for booking that taxi, your booking reference is ' + data);
+          }
+        });
 
 
-</script>
-</head> 
-<body> 
+      });
 
-	<div data-role="page">
 
-		<div data-role="header">
-			<h1>Book yourself a nice taxi</h1>
-		</div><!-- /header -->
+    });
 
-		<div data-role="content">	
 
-			<div class="map" id="map_canvas"></div>
-			<div><a id="book" data-role="button">Book!</a></div>
-
-		</div><!-- /content -->
-
-	</div><!-- /page -->
-
+  </script>
+</head>
+<body>
+  <div data-role="page">
+    <div data-role="header">
+      <h1>
+        Book yourself a nice taxi</h1>
+    </div>
+    <!-- /header -->
+    <div data-role="content">
+      <div class="map" id="map_canvas">
+      </div>
+      <div>
+        <a id="book" data-role="button">Book!</a></div>
+    </div>
+    <!-- /content -->
+  </div>
+  <!-- /page -->
 </body>
 </html>
